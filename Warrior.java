@@ -1,4 +1,3 @@
-//Manahal Tabassum
 //Team Cash Money- Angela K. Tim W.
 //APCS1 pd5
 //HW34 -- Ye Olde Role Playing Game, Unchained
