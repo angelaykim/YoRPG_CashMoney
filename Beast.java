@@ -10,8 +10,8 @@ public class Beast extends Character{
 	name = newName;
 	HP = 100;
 	strength = 150;
-	defense = 15;
-	attackRate = 0.2;
+	defense = 40;
+	attackRate = 0.3;
     }
 
     public String about(){

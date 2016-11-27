@@ -10,8 +10,8 @@ public class Archer extends Character{
 	name = newName;
 	HP = 95;
 	strength = 90;
-	defense = 15;
-	attackRate = 0.8;
+	defense = 30;
+	attackRate = 0.7;
     }
 
     public String about(){

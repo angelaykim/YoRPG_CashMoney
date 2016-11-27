@@ -8,10 +8,10 @@ public class Rogue extends Character{
     //constructor for class Rogue
     public Rogue(String newName){
 	name = newName;
-	HP = 70;
-	strength = 50;
-	defense = 65;
-	attackRate = 1.0;
+	HP = 80;
+	strength = 70;
+	defense = 60;
+	attackRate = 0.7;
     }
 
     public String about(){

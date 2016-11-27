@@ -8,9 +8,9 @@ public class Mage extends Character{
     //constructor for class Mage
     public Mage(String newName){
 	name = newName;
-	HP = 90;
+	HP = 100;
 	strength = 80;
-	defense = 70;
+	defense = 50;
 	attackRate = 0.6;
     }
 
