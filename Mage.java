@@ -10,8 +10,9 @@ public class Mage extends Character{
 	name = newName;
 	HP = 100;
 	strength = 80;
-	defense = 50;
+	defense = 30;
 	attackRate = 0.6;
+	specialAttack = 0;
     }
 
     public String about(){
@@ -24,8 +25,7 @@ public class Mage extends Character{
     }
 
     public void normalize(){
-	defense += 20;
-	attackRate -= 0.2;
+	defense = 50;
+	attackRate = 0.6;
     }
-
 }

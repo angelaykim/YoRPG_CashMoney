@@ -132,6 +132,8 @@ public class YoRPG
     {
 	int i = 1;
 	int d1, d2;
+	d1 = 0;
+	d2 = 0;
 
 	if ( Math.random() >= ( difficulty / 3.0 ) )
 	    System.out.println( "\nNothing to see here. Move along!" );
@@ -146,20 +148,52 @@ public class YoRPG
 		// If you land a hit, you incur greater damage,
 		// ...but if you get hit, you take more damage.
 		try {
-		    System.out.println( "\nDo you feel lucky?" );
-		    System.out.println( "\t1: Nay.\n\t2: Aye!" );
-		    i = Integer.parseInt( in.readLine() );
+		    System.out.println( "\nChoose your attack:" );
+		    if (pat.getSpecialAttack() < 3){
+			System.out.println( "\t1: Attack! \n\t2: Specialize!" );
+			i = Integer.parseInt( in.readLine() );
+		    }
+		    
+		    else if (pat.getSpecialAttack() == 3 && pat.getSpecialAttack() < 5){
+			System.out.println( "\t1: Attack! \n\t2: Specialize! \t3: Super Attack!" );
+			i = Integer.parseInt( in.readLine() );
+		    }
+		    
+		    else if (pat.getSpecialAttack() >= 5){
+			System.out.println( "\t1: Attack! \n\t2: Specialize! \t3: Super Attack! \t4: Mega Attack!");
+			i = Integer.parseInt( in.readLine() );
+		    }
 		}
 		catch ( IOException e ) { }
 
-		if ( i == 2 )
+		/*if ( i == 2 )
 		    pat.specialize();
 		else
-		    pat.normalize();
+		pat.normalize();*/
+		
+		if ( i == 1){
+		    d1 = pat.attack( smaug );
+		    d2 = smaug.attack( pat );
+		}
 
-		d1 = pat.attack( smaug );
-		d2 = smaug.attack( pat );
+		else if ( i == 2){
+		    pat.specialize();
+		    d1 = pat.attack( smaug );
+		    d2 = smaug.attack( pat );
+		}
 
+		else if ( i == 3 ){
+		    d1 = pat.attack( smaug );
+		    d2 = smaug.attack( pat );
+		}
+
+		else if ( i == 4){
+		    d1 = pat.specialAttack1( smaug );
+		    d2 = smaug.attack( pat );
+		}
+
+		pat.normalize();
+		
 		System.out.println( "\n" + pat.getName() + " dealt " + d1 +
 				    " points of damage.");
 
