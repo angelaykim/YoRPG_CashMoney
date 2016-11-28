@@ -19,15 +19,18 @@ public class Mage extends Character{
 	potions = 0;
     }
 
+    //description for character Mage
     public String about(){
 	return "\n Mage: magical \t Specialty: enhances strength with their magic";
     }
 
+    //gets Mage ready for a specialized attack
     public void specialize(){
 	defense -= 20;
 	attackRate += 0.2;
     }
 
+    //sets defense and attackRate back to default values
     public void normalize(){
 	defense = 50;
 	attackRate = 0.6;
