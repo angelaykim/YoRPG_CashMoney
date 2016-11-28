@@ -1,4 +1,6 @@
 public abstract class Sidekick{
+
+    //instance variables for all Sidekicks
     protected int HP;
     protected int strength;
     protected int defense;
@@ -24,7 +26,7 @@ public abstract class Sidekick{
     public void lowerHP(int num){
 	HP -= num;
     }
-    //returns damage inflicted on Monster
+    //returns damage inflicted on Monster and also lowers the HP of the monster
     public int attack(Monster charmander){
 	int damage = 0;
 	damage = (int)((strength * attackRate) - charmander.getDefense());
@@ -34,6 +36,7 @@ public abstract class Sidekick{
 	charmander.lowerHP(damage);
 	return damage;
     }
+
     public abstract void reset();
     public abstract void crazyAttack();
     public abstract void rockDefense();
