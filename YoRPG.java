@@ -172,12 +172,12 @@ public class YoRPG
 		    }
 		    
 		    else if (pat.getSpecialAttack() == 3 && pat.getSpecialAttack() < 5){
-			System.out.println( "\t1: Attack! \n\t2: Specialize! \t3: Super Attack!" );
+			System.out.println( "\t1: Attack! \n\t2: Specialize! \n\t3: Super Attack!" );
 			i = Integer.parseInt( in.readLine() );
 		    }
 		    
 		    else if (pat.getSpecialAttack() >= 5){
-			System.out.println( "\t1: Attack! \n\t2: Specialize! \t3: Super Attack! \t4: Mega Attack!");
+			System.out.println( "\t1: Attack! \n\t2: Specialize! \n\t3: Super Attack! \n\t4: Mega Attack!");
 			i = Integer.parseInt( in.readLine() );
 		    }
 		}

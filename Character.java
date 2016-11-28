@@ -6,6 +6,8 @@
 
 
 public abstract class Character{
+
+    //instance variables for all characters
     protected int HP;
     protected int strength;
     protected int defense;
@@ -28,14 +30,18 @@ public abstract class Character{
 	return defense;
     }
 
+    //accesor method to get the specialAttack value
     public int getSpecialAttack(){
 	return specialAttack;
     }
+    
     //lowers monster's HP by num
     public void lowerHP(int num){
 	HP -= num;
     }
-    //returns damage inflicted on Warrior
+    
+    /*returns damage inflicted on the Monster/Character and also lowers the HP of the opposing entity.
+      It increases specialAttack by 1 every time it is carried out*/
     public int attack(Character charmander){
 	int damage = 0;
 	damage = (int)((strength * attackRate) - charmander.getDefense());
@@ -47,6 +53,7 @@ public abstract class Character{
 	return damage;
     }
 
+    //returns damage inflicted on the Sidekick by Monster and also lowers the HP of the sidekick.
      public int attack(Sidekick charmander){
 	int damage = 0;
 	damage = (int)((strength * attackRate) - charmander.getDefense());
@@ -58,6 +65,9 @@ public abstract class Character{
 	return damage;
     }
 
+    /*special attack 1 is a stronger attack then simply attack
+    it returns the damage done on the Monster while also lowering the HP of the monster
+    once this attack is carried out, the specialAttack is set back to 0*/
     public int specialAttack1(Character smaug){
 	int damage = 0;
 	damage = (int)((strength * attackRate * 1.5) - smaug.getDefense());
@@ -68,7 +78,10 @@ public abstract class Character{
 	specialAttack = 0;
 	return damage;
     }
-
+    
+    /*This special Attack is stronger than all the other attacks.
+      It can only be carried out once specialAttack is greater than or equal to 5.
+      It will return the damage done on the Monster and also lowers the HP of the monster*/
     public int specialAttack2(Character smaug){
 	int damage = 0;
 	damage = (int)((strength * attackRate * 2) - smaug.getDefense());
@@ -86,5 +99,6 @@ public abstract class Character{
     //gets warrior ready for speacialized attack
     public abstract void specialize();
 
+    //returns a String describing the character
     public abstract String about();
 }
