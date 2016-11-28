@@ -13,6 +13,9 @@ public class Monster extends Character{
 	attackRate = 0.8;
 	name = "voldemort";
 	specialAttack = 0;
+	origHP = 0;
+	coins = 0;
+	potions = 0;
     }
 
     public String about(){

@@ -13,6 +13,9 @@ public class Warrior extends Character{
 	defense = 40;
 	attackRate = 0.5;
 	specialAttack = 0;
+	origHP = 125;
+	coins = 20;
+	potions = 0;
     }
     
     //description for character warrior

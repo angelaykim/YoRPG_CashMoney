@@ -13,6 +13,9 @@ public class Archer extends Character{
 	defense = 30;
 	attackRate = 0.7;
 	specialAttack = 0;
+	origHP = 95;
+	coins = 20;
+	potions = 0;
     }
 
     //description for character archer
