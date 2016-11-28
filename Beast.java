@@ -13,6 +13,10 @@ public class Beast extends Character{
 	defense = 40;
 	attackRate = 0.3;
 	specialAttack = 0;
+	origHP = 100;
+	coins = 20;
+	//inventory = new String[5];
+	potions = 0;
     }
 
     public String about(){

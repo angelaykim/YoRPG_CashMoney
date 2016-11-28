@@ -12,6 +12,11 @@ public abstract class Character{
     protected double attackRate;
     protected String name;
     protected int specialAttack;
+	protected int coins;
+    protected int origHP;
+	protected int potions;
+    //protected String[] inventory;
+	
     
     //if HP is greater than 0, then alive; else, dead
     public boolean isAlive(){
@@ -31,11 +36,64 @@ public abstract class Character{
     public int getSpecialAttack(){
 	return specialAttack;
     }
-    //lowers monster's HP by num
+	
+	public int getCoins(){
+		return coins;
+	}
+	
+	public void setCoins(int coin){
+		coins += coin;
+	}
+	
+	public void setPotions(int pots){
+		if (potions > 5){
+			System.out.println("Too many things, sorry.");
+			coins+=12;
+		}
+		else{
+		potions += pots;
+		}
+	}
+	
+	public int getPotions(){
+		return potions;
+	}
+	
+/*	public void setInv(String item){
+		int i = 0;
+		if (inventory.length > 5){
+			System.out.println("Too many things, sorry.");
+			coins+=12;
+		}
+		else{
+			while (i < 5){
+				if inventory[i].equals(null){
+					inventory[i] = item;
+				}
+				else{
+					i+=1;
+				}
+			}
+		}
+	}
+	
+	public String[] invToInv(String[] arr){
+		String[] inv;
+		for (String s: arr){
+			inv += x + " ";
+		}
+		return inv;
+	}
+
+	public String getInv(){
+		return invToStr(inventory);
+	}
+	*/
+	
     public void lowerHP(int num){
 	HP -= num;
     }
-    //returns damage inflicted on Warrior
+	
     public int attack(Character charmander){
 	int damage = 0;
 	damage = (int)((strength * attackRate) - charmander.getDefense());
@@ -69,6 +127,22 @@ public abstract class Character{
 	return damage;
     }
 
+    public void potionHP(){
+	HP = origHP;
+    }
+
+ /*   public void potionAR(){
+	attackRate = attackRate * 1.25;
+    }
+
+    public void potionStr(){
+	strength = strength * 1.25;
+    }
+
+    public void potionDef(){
+	defense = defense * 1.3;	
+    }
+    */
     //returns warrior defense and attack rate to default values
     public abstract void normalize();
    

@@ -28,6 +28,9 @@ public class YoRPG
     private int difficulty;
     private int charChoice;
     private String charType;
+	private int enter;
+	private int buy;
+	private int drink;
 
     private InputStreamReader isr;
     private BufferedReader in;
@@ -118,10 +121,74 @@ public class YoRPG
 	s = "Your character is " + charType + ".";
 	System.out.println(s);
 	System.out.println(pat.about());
-
+	System.out.println("\nP.S. we love you so we gave you monies. 20 monies to be exact. slay some monsters and you get more!!");
+	System.out.println("P.P.S. you can only have five things on you, tops....	");
     }//end newGame()
 
+	public void shop(){
+		String s;
+		int mon;
+		
+		s = "\nThere be a shop over yonder. Would you like to enter?\n";
 
+		s += "\t1: Yes\n";
+		s += "\t2: No\n";
+		s += "Selection: ";
+		System.out.print( s );
+
+		try {
+			enter = Integer.parseInt( in.readLine() );
+		}
+		catch ( IOException e ) { }
+	
+		if (enter == 1){
+			System.out.println("\nWELCOME. WE HAVE THING.\n");
+			System.out.println("just a reminder, you have " + pat.getCoins() + " monies.\n");
+			s = "\t1: Viva la Vida - restores to full HP\t12 monies\n";
+			/*s += "\t2: Zoom Zoom - increases attack rate by 25%\t9 monies\n";
+			s += "\t3: Swole Up Son - increases strength by 25%\t10 monies\n";
+			s += "\t4: Build A Wall - increases defense by 30%\t10 monies\n";*/
+			s += "\t2: I need to save money for college (no buy)\n";
+			s += "\nSelection: ";
+			System.out.print( s );
+
+			try {
+				buy = Integer.parseInt( in.readLine() );
+			}
+			catch ( IOException e ) { }
+		
+			if (buy == 1){
+				pat.setCoins(-12);
+				pat.setPotions(1);
+				System.out.println("Thank you for purchasing! Good luck on your adventuring!");
+				//playTurn();
+			}
+/*			else if (buy == 2){
+				pat.setCoins(-9);
+				pat.setInv("Zoom Zoom");
+				System.out.println("Bye!");
+				game.playTurn();
+			}
+			else if (buy == 3){
+				pat.setCoins(-10);
+				pat.setInv("Swole Up Son");
+				System.out.println("Bye!");
+				game.playTurn();
+			}
+			else if (buy == 4){
+				pat.setCoins(-10);
+				pat.setInv("Build A Wall");
+				System.out.println("Bye!");
+				game.playTurn();
+			}*/
+			else{
+				System.out.println("Bye!");
+				//playTurn();
+			}
+		}
+	}
+	
+	
     /*=============================================
       boolean playTurn -- simulates a round of combat
       pre:  Warrior pat has been initialized
@@ -134,7 +201,9 @@ public class YoRPG
 	int d1, d2;
 	d1 = 0;
 	d2 = 0;
-
+	
+	shop();
+	
 	if ( Math.random() >= ( difficulty / 3.0 ) )
 	    System.out.println( "\nNothing to see here. Move along!" );
 	else {
@@ -212,6 +281,9 @@ public class YoRPG
 	    //option 2: you slay the beast
 	    else if ( !smaug.isAlive() ) {
 		System.out.println( "HuzzaaH! Ye olde monster hath been slain!" );
+		pat.setCoins(8);
+		System.out.println("You got 8 monies!");
+		drink();
 		return true;
 	    }
 	    //option 3: the beast slays you
@@ -225,7 +297,35 @@ public class YoRPG
     }//end playTurn()
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+	public void drink(){
+		String str;
+			
+		str = "Would you like to drink a potion?\n";
+		str += "\t1: Yah\n";
+		str += "\t2: Nah\n";
+		str += "Selection: ";
+		System.out.print( str );
 
+		try {
+			drink = Integer.parseInt( in.readLine() );
+		}
+		catch ( IOException e ) { }
+		
+		if (drink == 1){
+			if (pat.getPotions() == 0){
+				System.out.println("You don't have any potions :(");
+			}
+			else{
+				System.out.println("To living!!");
+				pat.potionHP();
+				pat.setPotions(-1);
+			}
+		}
+		else{
+			System.out.println("Alright then, onward!");
+		}
+	}
+	
     public static void main( String[] args )
     {
 	//loading...
@@ -234,8 +334,11 @@ public class YoRPG
 	int encounters = 0;
 
 	while( encounters < MAX_ENCOUNTERS ) {
+
 	    if ( !game.playTurn() )
 		break;
+		//game.shop();
+		//game.drink();
 	    encounters++;
 	    System.out.println();
 	}
@@ -244,5 +347,3 @@ public class YoRPG
     }//end main
 
 }//end class YoRPG
-
-
