@@ -13,10 +13,6 @@ public class Mage extends Character{
 	defense = 30;
 	attackRate = 0.6;
 	specialAttack = 0;
-	origHP = 100;
-	coins = 20;
-	//inventory = new String[5];
-	potions = 0;
     }
 
     //description for character Mage
