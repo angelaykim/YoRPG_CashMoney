@@ -15,15 +15,18 @@ public class Rogue extends Character{
 	specialAttack = 0;
     }
 
+    //description for character Rogue
     public String about(){
 	return "\n Rogue: master of stealth \t Specialty: sneak attack";
     }
 
+    //gets rogue ready for a specialized attack
     public void specialize(){
 	defense -= 15;
 	attackRate += 0.1;
     }
 
+    //sets defense and attackRate back to default values
     public void normalize(){
 	defense = 60;
 	attackRate = 0.7;

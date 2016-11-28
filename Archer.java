@@ -15,15 +15,18 @@ public class Archer extends Character{
 	specialAttack = 0;
     }
 
+    //description for character archer
     public String about(){
 	return "\n Archer: has a bow and arrow \t Specialty: long range attacks";
     }
 
+    //gets archer ready for specialized attack
     public void specialize(){
 	defense -= 5;
 	attackRate += 0.1;
     }
-
+    
+    //sets the defense and attackRate back to the default values
     public void normalize(){
 	defense = 30;
 	attackRate = 0.7;

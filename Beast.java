@@ -15,15 +15,18 @@ public class Beast extends Character{
 	specialAttack = 0;
     }
 
+    //description for character Beast
     public String about(){
 	return "\n Beast: hulk-like brolic dude(tte) \t Specialty: stupid strong";
     }
 
+    //gets beast ready for a specialized attack
     public void specialize(){
 	defense -= 5;
 	attackRate += 0.4;
     }
-
+    
+    //sets defense and attackRate back to default values
     public void normalize(){
 	defense = 40;
 	attackRate = 0.3;
