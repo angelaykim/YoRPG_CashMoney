@@ -47,17 +47,6 @@ public abstract class Character{
 	return damage;
     }
 
-     public int attack(Sidekick charmander){
-	int damage = 0;
-	damage = (int)((strength * attackRate) - charmander.getDefense());
-	if (damage < 0){
-	    damage = 0;
-	}
-	charmander.lowerHP(damage);
-	specialAttack += 1;
-	return damage;
-    }
-
     public int specialAttack1(Character smaug){
 	int damage = 0;
 	damage = (int)((strength * attackRate * 1.5) - smaug.getDefense());

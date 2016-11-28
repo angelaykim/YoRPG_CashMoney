@@ -22,7 +22,6 @@ public class YoRPG
     //each round, a Warrior and a Monster will be instantiated...
     private Character pat;   //Is it man or woman?
     private Monster smaug; //Friendly generic monster name?
-    private Sidekick knicks;
 
     private int moveCount;
     private boolean gameOver;
@@ -99,35 +98,26 @@ public class YoRPG
         if (charChoice == 1){
 	    pat = new Warrior(name);
 	    charType = "Warrior";
-	    knicks = new LittleWarrior();
 	}
 	if (charChoice == 2){
 	    pat = new Mage(name);
 	    charType = "Mage";
-	    knicks = new LittleMage();
 	}
 	if (charChoice == 3){
 	    pat = new Rogue(name);
 	    charType = "Rogue";
-	    knicks = new LittleRogue();
 	}
 	if (charChoice == 4){
 	    pat = new Archer(name);
 	    charType = "Archer" ;
-	    knicks = new LittleArcher();
 	}
 	if (charChoice == 5){
 	    pat = new Beast(name);
 	    charType = "Beast";
-	    knicks = new LittleBeast();
 	}
 	s = "Your character is " + charType + ".";
 	System.out.println(s);
 	System.out.println(pat.about());
-
-	s = "You received a sidekick! Its name is " + knicks.getName() + ".";
-	System.out.println(s);
-	    
 
     }//end newGame()
 
@@ -141,16 +131,9 @@ public class YoRPG
     public boolean playTurn()
     {
 	int i = 1;
-	int n = 1;
-	int d1, d2, d3, d4;
+	int d1, d2;
 	d1 = 0;
 	d2 = 0;
-	d3 = 0;
-	d4 = 0;
-
-	if (!knicks.isAlive()){
-		knicks.reset();
-	    }
 
 	if ( Math.random() >= ( difficulty / 3.0 ) )
 	    System.out.println( "\nNothing to see here. Move along!" );
@@ -182,15 +165,6 @@ public class YoRPG
 		    }
 		}
 		catch ( IOException e ) { }
-		
-		try{
-		    if (knicks.isAlive()){
-			System.out.println( "Command your sidekick to:" );
-			System.out.println( "\t1: Stay Balanced \n\t2: Go nuts and attack! \n\t3: Shield up like Dwayne Johnson");
-			n = Integer.parseInt(in.readLine());
-		    }
-		}
-		catch ( IOException e) {}
 
 		/*if ( i == 2 )
 		    pat.specialize();
@@ -199,56 +173,32 @@ public class YoRPG
 		
 		if ( i == 1){
 		    d1 = pat.attack( smaug );
-		    d2 = smaug.attack(pat);
+		    d2 = smaug.attack( pat );
 		}
 
 		else if ( i == 2){
 		    pat.specialize();
 		    d1 = pat.attack( smaug );
-		    d2 = smaug.attack(pat);
-		    pat.normalize();
+		    d2 = smaug.attack( pat );
 		}
 
 		else if ( i == 3 ){
-		    d1 = pat.specialAttack1( smaug );
-		    d2 = smaug.attack(pat);
+		    d1 = pat.attack( smaug );
+		    d2 = smaug.attack( pat );
 		}
 
 		else if ( i == 4){
-		    d1 = pat.specialAttack2( smaug );
-		    d2 = smaug.attack(pat);
+		    d1 = pat.specialAttack1( smaug );
+		    d2 = smaug.attack( pat );
 		}
-	       
 
+		pat.normalize();
 		
 		System.out.println( "\n" + pat.getName() + " dealt " + d1 +
 				    " points of damage.");
-		System.out.println ("\n" + "Ye Olde Monster smacked " + pat.getName() + " for " + d2 + " points of damage.");
 
-		if (knicks.isAlive()){
-		    if (n == 2){
-			knicks.crazyAttack();
-		    }
-		    else if (n == 3){
-			knicks.rockDefense();
-		    }
-		    d3 = knicks.attack(smaug);
-		    knicks.normalize();
-		    System.out.println( "\n" + knicks.getName() + " dealt " + d3 + "points of damage.");
-		}
-		
-		if (knicks.isAlive()){
-		    
-		    if (Math.random() < 0.5){
-			d4 = smaug.attack( knicks );
-			System.out.println("\n" + "Ye Olde Monster smacked " + knicks.getName() + " for " + d4 + " points of damage.");
-			if (!knicks.isAlive()){
-			    System.out.println("Your sidekick " + knicks.getName() + " is bludgeoned!");
-			}
-		    }
-		}
-
-		
+		System.out.println( "\n" + "Ye Olde Monster smacked " + pat.getName() +
+				    " for " + d2 + " points of damage.");
 	    }//end while
 
 	    //option 1: you & the monster perish
@@ -287,7 +237,6 @@ public class YoRPG
 	    if ( !game.playTurn() )
 		break;
 	    encounters++;
-	   
 	    System.out.println();
 	}
 
